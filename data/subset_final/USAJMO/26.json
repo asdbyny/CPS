@@ -1,0 +1,11 @@
+{
+    "competition_id": "2023_USAJMO_Problems",
+    "problem_id": 1,
+    "difficulty": 6,
+    "category": "Number Theory",
+    "Problem Type": "Proof",
+    "problem": "Find all triples of positive integers $(x,y,z)$ that satisfy the equation\n\n\n\\begin{align*} 2(x+y+z+2xyz)^2=(2xy+2yz+2zx+1)^2+2023  \\end{align*}\n\n\n\n\n\n\n",
+    "solutions": {
+        "Solution 1": "We claim that the only solutions are $(2,3,3)$ and its permutations.\n\n\nFactoring the above squares and canceling the terms gives you:\n\n\n$8(xyz)^2 + 2(x^2 +y^2 + z^2) = 4((xy)^2 + (yz)^2 + (zx)^2) + 2024$\n\n\nJumping on the coefficients in front of the $x^2$, $y^2$, $z^2$ terms, we factor into: \n\n\n$(2x^2 - 1)(2y^2 - 1)(2z^2 - 1) = 2023$\n\n\nRealizing that the only factors of 2023 that could be expressed as $(2x^2 - 1)$ are $1$, $7$, and $17$, we simply find that the only solutions are $(2,3,3)$ by inspection.\n\n\n-Max\n\n\n\n\nAlternatively, a more obvious factorization is:\n\n\n$2(x+y+z+2xyz)^2=(2xy+2yz+2zx+1)^2+2023$\n\n\n$(\\sqrt{2}x+\\sqrt{2}y+\\sqrt{2}z+2\\sqrt{2}xyz)^2-(2xy+2yz+2zx+1)^2=2023$\n\n\n$(2\\sqrt{2}xyz+2xy+2yz+2zx+\\sqrt{2}x+\\sqrt{2}y+\\sqrt{2}z+1)(2\\sqrt{2}xyz-2xy-2yz-2zx+\\sqrt{2}x+\\sqrt{2}y+\\sqrt{2}z-1)=2023$\n\n\n$(\\sqrt{2}x+1)(\\sqrt{2}y+1)(\\sqrt{2}z+1)(\\sqrt{2}x-1)(\\sqrt{2}y-1)(\\sqrt{2}z-1)=2023$\n\n\n$(2x^2-1)(2y^2-1)(2z^2-1)=2023$\n\n\nProceed as above. ~eevee9406\n\n\n"
+    }
+}

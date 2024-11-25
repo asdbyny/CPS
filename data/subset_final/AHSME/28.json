@@ -1,0 +1,10 @@
+{
+    "competition_id": "1968_AHSME_Problems",
+    "problem_id": 29,
+    "category": "Algebra",
+    "Problem Type": "Multiple Choice",
+    "problem": "Given the three numbers $x,y=x^x,z=x^{x^x}$ with $.9<x<1.0$. Arranged in order of increasing magnitude, they are:\n\n\n$\\text{(A) } x,z,y\\quad \\text{(B) } x,y,z\\quad \\text{(C) } y,x,z\\quad \\text{(D) } y,z,x\\quad \\text{(E) } z,x,y$\n\n\n",
+    "solutions": {
+        "Solution": "$\\fbox{A}$\n\n\n"
+    }
+}
