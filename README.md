@@ -5,7 +5,7 @@
 ![](./assets/figures/CreativeMath.png)
 
 ## News
-- [2024/12] 🔥 **Our CreativeMath paper is accepted by AAAI 2025**.
+- [2024/12] 🔥 **Our CreativeMath paper is accepted by [AAAI 2025](https://aaai.org/conference/aaai/aaai-25/)**.
 
 ## TL;DR
 Evaluating the creative problem-solving capabilities of Large Language Models in mathematical reasoning.
