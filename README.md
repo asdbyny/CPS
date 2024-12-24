@@ -23,6 +23,3 @@ If you find this project is helpful to your research, please consider to cite ou
   year={2024}
 }
 ```
-
-## Contact Us
-For inquiries or further assistance, contact us at [jy394@njit.edu](mailto:jy394@njit.edu) or open an issue on this repository.
