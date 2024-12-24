@@ -1,6 +1,6 @@
 # Assessing the Creativity of LLMs in Proposing Novel Solutions to Mathematical Problems
 
-[[paper](https://arxiv.org/abs/2410.18336)]
+[![](https://img.shields.io/badge/cs.CL-arXiv%3A2410.18336-B31B1B.svg)](https://arxiv.org/abs/2410.18336)
 
 ![](./assets/figures/CreativeMath.png)
 
