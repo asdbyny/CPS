@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/figures/logo.png" width="130"> 
+    <img src="assets/figures/logo.png" width="120"> 
 </p>
 
 # Assessing the Creativity of LLMs in Proposing Novel Solutions to Mathematical Problems
