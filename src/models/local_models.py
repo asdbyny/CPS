@@ -4,7 +4,6 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 
 from config import config
-from models.prompt_utils import load_messages
 
 max_new_tokens = config["model_config"]["max_new_tokens"]
 do_sample = config["model_config"]["do_sample"]

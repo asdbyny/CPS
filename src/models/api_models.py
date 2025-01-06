@@ -8,7 +8,6 @@ from google.api_core.exceptions import ResourceExhausted
 from openai import OpenAI
 
 from config import config
-from models.prompt_utils import load_messages
 
 max_new_tokens = config["model_config"]["max_new_tokens"]
 temperature = config["model_config"]["temperature"]
