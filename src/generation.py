@@ -10,7 +10,7 @@ from config import config
 from logger import setup_logger
 from models import ModelWrapper
 from prompts import load_novel_solution_generation_prompt
-from utils import oad_json, save_json
+from utils import load_json, save_json
 
 save_interval = config["experiment"][
     "save_interval"
