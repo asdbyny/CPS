@@ -10,6 +10,7 @@ from config import config
 from logger import setup_logger
 from models import ModelWrapper
 from prompts import load_novel_solution_generation_prompt
+from utils import oad_json, save_json
 
 save_interval = config["experiment"][
     "save_interval"
@@ -45,8 +46,7 @@ def main():
     model = ModelWrapper(model_name)
 
     data_path = config["file_paths"]["dataset"]
-    with open(data_path, "r") as file:
-        data = json.load(file)
+    data = load_json(data_path)
 
     results = []
     for problem_id, sample in tqdm(enumerate(data)):
@@ -66,8 +66,7 @@ def main():
     output_dir = config["file_paths"]["generation"]
     output_file = os.path.join(output_dir, f"{model_name}.json")
     os.makedirs(output_dir, exist_ok=True)
-    with open(output_file, "w") as file:
-        json.dump(results, file, indent=4)
+    save_json(results, output_file)
     logger.info(f"Results saved to {os.path.abspath(output_file)}")
 
 
