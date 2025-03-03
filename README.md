@@ -9,8 +9,9 @@
 ![](./assets/figures/CreativeMath.png)
 
 ## News
+- [2025/03] CreativeMath was orally presented at AAAI-25 Conference (4.6%).
 - [2025/01] **Dataset Reformatted**: The dataset has been restructured to improve usability. **Code Rewritten**: The source code has been refactored for better readability, and maintainability.
-- [2024/12] 🔥 **Our CreativeMath paper is accepted by [AAAI 2025](https://aaai.org/conference/aaai/aaai-25/)**.
+- [2024/12] 🔥 **Our CreativeMath paper is accepted by [AAAI 2025](https://aaai.org/conference/aaai/aaai-25/)** (23.4% acceptance rate).
 
 ## TL;DR
 Evaluating the creative problem-solving capabilities of Large Language Models in mathematical reasoning.
