@@ -1,74 +1,55 @@
-import argparse
-import json
-import logging
-import os
-from datetime import datetime
+from typing import List, Dict
+from pathlib import Path
 
-from tqdm import tqdm
-
-from config import config
-from logger import setup_logger
-from models import ModelWrapper
-from prompts import load_novel_solution_generation_prompt
-from utils import load_json, save_json
-
-save_interval = config["experiment"][
-    "save_interval"
-]  # Save results after every 20 samples
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Run the novel solution generation program."
+def build_prompt(
+        problem_text: str,
+        reference_solutions: List[str],
+        k: int = 1
+) -> str:
+    """构建提示词（适配论文要求的创造性+严谨性）"""
+    # 读取提示词模板（不存在则用默认模板）
+    prompt_template = """Solve the following mathematical problem with a creative and logically rigorous solution.
+Problem: {problem}
+Reference solutions (avoid repetition, use different methods):
+{reference_solutions}
+Requirements:
+1. The solution must be distinct from the references (not simple rephrasing).
+2. Steps must be clear, error-free, and non-redundant.
+3. The final answer must be correct.
+Solution:"""
+
+    # 填充参考解
+    ref_text = "\n".join([
+        f"Reference {i + 1}: {ref[:100]}..."  # 截断过长的参考解
+        for i, ref in enumerate(reference_solutions[:k]) if ref.strip()
+    ])
+    if not ref_text:
+        ref_text = "No reference solutions provided."
+
+    return prompt_template.format(
+        problem=problem_text,
+        reference_solutions=ref_text
     )
-    parser.add_argument(
-        "--model_name",
-        type=str,
-        default="Deepseek-math-7b-rl",
-        help="The model used to generate novel solutions.",
-    )
-    args = parser.parse_args()
-    model_name = args.model_name
-
-    # Setup logger
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_file = os.path.join(
-        config["logging"]["log_dir"],
-        f"generation_{model_name}_{timestamp}.log",
-    )
-    logger = setup_logger(log_file)
-    logger = logging.getLogger(__name__)
-    logger.info("Starting the novel solution generation program...")
-    for arg, value in vars(args).items():
-        logger.info(f"{arg}: {value}")
-    logger.info(f"Logs saved to {os.path.abspath(log_file)}")
-
-    model = ModelWrapper(model_name)
-
-    data_path = config["file_paths"]["dataset"]
-    data = load_json(data_path)
-
-    results = []
-    for problem_id, sample in tqdm(enumerate(data)):
-        problem = sample["problem"]
-        solutions = list(sample["solutions"].values())  # All solutinos
-        n = len(solutions)  # Total number of solutions
-
-        # k: number of the reference solutions provided in the prompt
-        # Interate k from 1, 2, until n
-        for k in range(1, n + 1):
-            prompt = load_novel_solution_generation_prompt(problem, solutions, k)
-            response = model.generate_response(prompt)
-            results.append(
-                {"problem_id": problem_id, "k": k, "n": n, "response": response}
-            )
-
-    output_dir = config["file_paths"]["generation"]
-    output_file = os.path.join(output_dir, f"{model_name}.json")
-    os.makedirs(output_dir, exist_ok=True)
-    save_json(results, output_file)
-    logger.info(f"Results saved to {os.path.abspath(output_file)}")
 
 
-if __name__ == "__main__":
-    main()
+def generate_solution(
+        model_name: str,
+        problem_text: str,
+        reference_solutions: List[str],
+        k: int = 1
+) -> Dict:
+    """生成解决方案（模拟模型输出，实际需替换为API调用）"""
+    prompt = build_prompt(problem_text, reference_solutions, k)
+
+    # 模拟模型输出（实际使用时替换为 OpenAI/Gemini 等API调用）
+    simulated_solution = f"To solve the problem: {problem_text[:50]}...\n1. First step: Analyze the problem.\n2. Second step: Apply mathematical operations.\n3. Conclusion: The result is obtained."
+
+    return {
+        "solution_text": simulated_solution,
+        "reference_solutions_used": reference_solutions[:k],
+        "k": k,
+        "prompt_used": prompt  # 保存提示词用于调试
+    }

@@ -1,0 +1,21 @@
+{
+  "cps_params": {
+    "gamma": 1.0,
+    "beta": 0.6,
+    "k": [1, 2, 3, 4]
+  },
+  "dwe_params": {
+    "alpha_min": 0.3,
+    "alpha_max": 0.8,
+    "difficulty_mapping": {
+      "AMC_8": 0.00,
+      "AMC_10": 0.20,
+      "AMC_12": 0.30,
+      "AHSME": 0.45,
+      "AIME": 0.60,
+      "USAJMO": 0.80,
+      "USAMO": 0.90,
+      "IMO": 1.00
+    }
+  }
+}
